@@ -37,9 +37,12 @@ module Integrity
       unless token == Integrity.config.github_token
         halt 403
       end
-
-      Payload::GitHub.build(
-        JSON.parse(params[:payload])
+      
+      request.body.rewind
+      payload = request.body.read
+      
+      Payload::GitLab.build(
+        JSON.parse(payload)
       ).to_s
     end
 

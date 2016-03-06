@@ -15,7 +15,7 @@ Integrity.configure do |c|
   # Options are explained in local.rb.example
   c.database                    = 'sqlite3:db/integrity.db'
   c.directory                   = 'builds'
-  c.base_url                    = 'http://ci.example.org'
+  c.base_url                    = 'http://ci.boundlessdrop.com/'
   c.build_all                   = true
   c.auto_branch                 = false
   c.trim_branches               = false
