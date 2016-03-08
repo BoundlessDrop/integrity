@@ -1,4 +1,4 @@
-
+require "byebug"
 module Integrity
   class Notifier
     class Shell < Notifier::Base
@@ -26,9 +26,11 @@ module Integrity
       end
 
       def initialize(build, config={})
-        @success_cmd = config["success_script"]
-        @failed_cmd = config["failed_script"]
-        super
+        super(build, config)
+        @build = build       
+        @success_cmd = config["success_script"] + " -i succeeded  commit by: #{build.author}" #\ncommit: #{build.commit.message} id: #{}\ncommit made by: #{build.author}\n " 
+        @failed_cmd = config["failed_script"] + " -i " + build_output.reverse[0..50].reverse
+        #byebug
       end
 
       def deliver!

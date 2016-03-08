@@ -8,6 +8,10 @@ module Integrity
       def uri
         @payload['repository']['ssh_url']
       end
+
+      def name
+        @payload['repository']['name']
+      end
     end
   end
 end

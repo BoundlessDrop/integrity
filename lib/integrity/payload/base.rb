@@ -14,7 +14,7 @@ module Integrity
       end
 
       def repo
-        Repository.new(uri, branch)
+        Repository.new(uri, branch, name)
       end
 
       def head

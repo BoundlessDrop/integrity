@@ -7,6 +7,7 @@ rescue LoadError
 end
 
 require 'integrity'
+require "integrity/notifier/email"
 
 # Don't modify this file.
 # Please use local.rb to configure your Integrity instance.

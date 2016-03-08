@@ -65,7 +65,7 @@ module Integrity
   autoload :ResqueBuilder,   "integrity/builders/resque_builder"
   autoload :ExplicitBuilder, "integrity/builders/explicit_builder"
 
-  Repository = Struct.new(:uri, :branch)
+  Repository = Struct.new(:uri, :branch, :name)
 
   def self.config
     @config ||= Configuration.new

@@ -1,5 +1,6 @@
 begin
   require "pony"
+  require "byebug"
 rescue LoadError => e
   warn "Install pony to use the Email notifier: #{e.class}: #{e.message}"
   raise
@@ -26,6 +27,7 @@ module Integrity
       end
 
       def deliver!
+          #byebug
         Pony.mail(
           :to      => to,
           :from    => from,
@@ -47,6 +49,7 @@ module Integrity
         end
 
         def configure_smtp
+            #byebug
           user = @config["user"] || ""
           pass = @config["pass"] || ""
           user = nil if user.empty?

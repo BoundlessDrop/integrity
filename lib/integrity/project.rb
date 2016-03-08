@@ -39,7 +39,7 @@ module Integrity
     end
 
     def repo
-      @repo ||= Repository.new(uri, branch)
+      @repo ||= Repository.new(uri, branch ,name)
     end
 
     def build_head
