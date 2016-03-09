@@ -14,6 +14,7 @@ gem 'sinatra-authorization'
 
 gem 'bcat'
 gem 'rake'
+gem 'byebug'
 
 # If you want to use Thin:
 # gem 'thin'

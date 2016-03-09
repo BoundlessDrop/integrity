@@ -7,3 +7,7 @@ builds
 *.tmproj
 /tmp
 /local.rb
+.byebug_history
+Gemfile.lock
+*.swp
+*.swa
