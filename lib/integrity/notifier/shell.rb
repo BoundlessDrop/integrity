@@ -28,9 +28,8 @@ module Integrity
       def initialize(build, config={})
         super(build, config)
         @build = build       
-        @success_cmd = config["success_script"] + " -i succeeded  commit by: #{build.author}" #\ncommit: #{build.commit.message} id: #{}\ncommit made by: #{build.author}\n " 
-        @failed_cmd = config["failed_script"] + " -i " + build_output.reverse[0..50].reverse
-        #byebug
+        @success_cmd = config["success_script"] + " -i '#{build.project.name}-#{build.project.branch} build succeeded\ncommit: #{build.commit.message}\ncommit id: #{build.commit.identifier}\ncommit made by: #{build.author}' " 
+        @failed_cmd = config["failed_script"] + " -i '#{build.project.name}-#{build.project.branch} build failed\ncommit: #{build.commit.message}\ncommit id: #{build.commit.identifier}\ncommit made by: #{build.author}'"
       end
 
       def deliver!
