@@ -33,7 +33,8 @@ module Integrity
     end
 
     def all
-      @all ||= Project.all(:name.like => "#{@repo.name}%")
+      @all ||= Project.all(:name.like => "#{@repo.name}-#{@repo.branch}%")
     end
   end
 end
+
