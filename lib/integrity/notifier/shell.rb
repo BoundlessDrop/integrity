@@ -28,8 +28,10 @@ module Integrity
       def initialize(build, config={})
         super(build, config)
         @build = build       
-        @success_cmd = config["success_script"] + " -i '#{build.project.name}-#{build.project.branch} build succeeded\ncommit: #{build.commit.message}\ncommit id: #{build.commit.identifier}\ncommit made by: #{build.author}' " 
-        @failed_cmd = config["failed_script"] + " -i '#{build.project.name}-#{build.project.branch} build failed\ncommit: #{build.commit.message}\ncommit id: #{build.commit.identifier}\ncommit made by: #{build.author}'"
+        @output_link = "http://ci.boundlessdrop.com/#{build.project.name.downcase}/builds/#{build.id}/raw"
+        @coverage = build.output.empty? ? "n/a" : build.output[-20..-1].split(" ")[-2..-1].join(" ")
+        @success_cmd = config["success_script"] + " -i '#{build.project.name} build succeeded\nTest coverage: #{@coverage}\nCommit: #{build.commit.message}\nCommit id: #{build.commit.identifier}\nCommit by: #{build.author}' " 
+        @failed_cmd = config["failed_script"] + " -i '#{build.project.name} build failed\nOutput: #{@output_link}\nTest coverage: #{@coverage}\nCommit: #{build.commit.message}\nCommit id: #{build.commit.identifier}\nCommit by: #{build.author}'"
       end
 
       def deliver!
