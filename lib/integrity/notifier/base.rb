@@ -1,4 +1,3 @@
-require "byebug"
 module Integrity
   class Notifier
     class Base
